@@ -1,0 +1,278 @@
+html
+{
+  background: url(bkg.png) #e4ded0;
+  display: flex;
+  flex-direction: column;
+
+  body
+  {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    color: #534640;
+    font-family: 'Merriweather', serif;
+    line-height: 24px;
+    font-size: 16px;
+    max-width: 777px;
+    margin: 0 auto;
+
+    a {
+      color: #c97400;
+      text-decoration: none;
+    }
+
+    button, select
+    {
+      background-color: #f2bb71;
+      border: 1px solid #534640;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Merriweather', serif;
+      text-transform: uppercase;
+      outline: none;
+
+      &:hover
+      {
+        background-color: #edcc72;
+      }
+
+      &:active
+      {
+        background-color: #ebdd80;
+      }
+    }
+
+    #share_it {
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    #settings
+    {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex: 0 0 auto;
+      padding: 10px;
+
+      div
+      {
+        display: flex;
+        flex-direction: row;
+        flex: 0 0 auto;
+      }
+
+      span, select {
+        margin-right: 5px;
+      }
+
+      #share_url
+      {
+        flex: 1 1 auto;
+        padding: 2px;
+        font-size: 15px;
+        display: none;
+      }
+    }
+
+    #spread
+    {
+      display: flex;
+      flex-direction: row;
+      flex: 1 1 auto;
+      flex-wrap: wrap;
+
+      .card_wrap
+      {
+        flex: 1 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .card
+        {
+          display: flex;
+          flex-direction: column;
+          height: 300px;
+          width: 200px;
+          border: 1px solid #534640;
+          border-radius: 5px;
+          margin: 10px;
+          padding: 10px;
+          box-shadow: 2px 2px 6px rgba(173,142,115,1);
+          background: url('card.png') #f0ede9;
+
+          .meaning, .deck
+          {
+            flex: 0 1 auto;
+            text-align: center;
+            font-size: 23px;
+            line-height: 23px;
+            text-transform: uppercase;
+            background: rgb(208,187,158);
+            background: linear-gradient(90deg, rgba(208,187,158,0.7) 0%, rgba(227,221,207,0.5) 15%, rgba(227,221,207,0.5) 85%, rgba(208,187,158,0.7) 100%);
+            padding: 10px 3px;
+            border: 1px dashed #534640;
+          }
+
+          .deck
+          {
+            font-size: 10px;
+            line-height: 11px;
+          }
+
+          .text_wrap
+          {
+            flex: 1 1 auto;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border-left: 1px dashed #534640;
+            border-right: 1px dashed #534640;
+
+            .text
+            {
+              text-align: center;
+              font-family: 'Schoolbell', cursive;
+              font-size: 24px;
+              line-height: 23px;
+              color: #000;
+            }
+          }
+
+          &#card_0 .text_wrap
+          {
+            background: rgb(243,188,114);
+            background: radial-gradient(circle, rgba(234,221,131,.5) 0%, rgba(243,188,114,.5) 100%);
+          }
+
+          &#card_1 .text_wrap
+          {
+            background: rgb(234,236,180);
+            background: radial-gradient(circle, rgba(234,236,180,.5) 0%, rgba(196,221,134,.5) 100%);
+          }
+
+          &#card_2 .text_wrap
+          {
+            background: rgb(178,209,209);
+            background: radial-gradient(circle, rgba(215,216,156,.5) 0%, rgba(178,209,209,.5) 100%);
+          }
+        }
+      }
+    }
+
+    #footer
+    {
+      flex: 0 0 auto;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 495px)
+{
+  html body
+  {
+    #settings {
+      padding: 5px;
+    }
+
+    #spread
+    {
+      padding-top: 26px;
+
+      .card_wrap .card
+      {
+        margin: 5px;
+        height: 240px;
+        width: 170px;
+        margin-top: -24px;
+
+        .meaning, .deck
+        {
+          padding: 8px 3px;
+        }
+
+        .meaning
+        {
+          font-size: 18px;
+          line-height: 11px;
+        }
+
+        .deck
+        {
+          font-size: 9px;
+          line-height: 9px;
+        }
+
+        .text_wrap .text
+        {
+          font-size: 20px;
+          line-height: 19px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 437px) and (min-width: 379px)
+{
+  html body
+  {
+    #spread
+    {
+      padding-top: 26px;
+
+      .card_wrap .card
+      {
+        margin: 5px;
+        height: 227px;
+        width: 140px;
+        margin-top: -24px;
+
+        .meaning, .deck
+        {
+          padding: 4px 3px;
+        }
+
+        .meaning
+        {
+          font-size: 15px;
+          line-height: 16px;
+        }
+
+        .deck
+        {
+          font-size: 9px;
+          line-height: 9px;
+        }
+
+        .text_wrap .text
+        {
+          font-size: 18px;
+          line-height: 17px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 378px)
+{
+  html body
+  {
+    #spread
+    {
+      padding-top: 44px;
+
+      .card_wrap .card
+      {
+        margin-top: -44px;
+      }
+    }
+  }
+}
