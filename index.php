@@ -1,12 +1,25 @@
 <?php
-include('settings_default.php');
-$default_settings = $settings;
+require('settings_default.php');
+$set = $settings;
 $setup = false;
 if(file_exists('settings.php')){
 	include('settings.php');
-	$settings = array_merge($default_settings, $settings);
+	foreach($settings as $key => $val){
+		$set[$key] = $val;
+	}
 	$setup = true;
-}?>
+}
+if(file_exists('../all_settings.php')){
+	include('../all_settings.php');
+	if(isset($all_settings['CAHrot'])){
+		foreach($all_settings['CAHrot'] as $key => $val){
+			$set[$key] = $val;
+		}
+		$setup = true;
+	}
+}
+$settings = $set;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +56,9 @@ if(file_exists('settings.php')){
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Schoolbell&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <body>
+		<pre>
+			<?php var_dump($settings); ?>
+		</pre>
     <script>
 			<?php if(!$setup){ ?>
 				console.log('You have not created your settings.php file, please copy settings_default.php to settings.php and update it with correct settings.');
