@@ -17,17 +17,16 @@ if(file_exists('settings.php')){
   <link rel="icon" type="image/png" sizes="32x32" href="css/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="css/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="css/favicon_io/site.webmanifest">
+	<?php
+	  $card = $settings['CAHrot_site_path'] . "css/card_img.png";
+	  $url = $settings['CAHrot_site_path'];
 
-<?php
-  $card = $settings['CAHrot_site_path'] . "css/card_img.png";
-  $url = $settings['CAHrot_site_path'];
-
-  if(isset($_GET['s']))
-  {
-    $card = $settings['CAHrot_site_path'] . "og_img.php?s=" . $_GET['s'];
-    $url = $settings['CAHrot_site_path'] . "?s=" . $_GET['s'];
-  }
-?>
+	  if(isset($_GET['s']))
+	  {
+	    $card = $settings['CAHrot_site_path'] . "og_img.php?s=" . $_GET['s'];
+	    $url = $settings['CAHrot_site_path'] . "?s=" . $_GET['s'];
+	  }
+	?>
   <meta property="og:title" content="<?php echo $settings['title']; ?>">
   <meta property="og:description" content="Tarot card spreads using Cards Against Humanity.">
   <meta property="og:image" content="<?php echo $card; ?>">
