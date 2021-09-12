@@ -56,9 +56,6 @@ $settings = $set;
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Schoolbell&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <body>
-		<pre>
-			<?php var_dump($settings); ?>
-		</pre>
     <script>
 			<?php if(!$setup){ ?>
 				console.log('You have not created your settings.php file, please copy settings_default.php to settings.php and update it with correct settings.');
