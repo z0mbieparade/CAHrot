@@ -52,7 +52,8 @@ $settings = $set;
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@rotterz">
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Schoolbell&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <body>
