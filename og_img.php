@@ -21,6 +21,13 @@ function default_img()
 
 if(isset($_GET['s']))
 {
+  $reasons = array(
+    1 => 'Error: Removed for offensive language',
+    2 => 'Error: Duplicate card',
+    3 => 'Error: Card text too long',
+    4 => 'Error: Removed for grammatical errors', 
+  );
+
   preg_match('/^(ppf|soa|ytr)(.*?)$/i', $_GET['s'], $matches);
   if(isset($matches[1]) && isset($matches[2]))
   {
@@ -32,7 +39,7 @@ if(isset($_GET['s']))
       return;
     }
 
-    $file = file_get_contents("js/CAH.json");
+    $file = file_get_contents("js/cah-filtered.json");
 
     if(!$file)
     {
@@ -50,6 +57,8 @@ if(isset($_GET['s']))
 
     if($img) $png_image = imagecreatefrompng('css/' . $matches[1] . '.png');
     if($img) $black = imagecolorallocate($png_image, 0, 0, 0);
+    if($img) $red = imagecolorallocate($png_image, 201, 0, 0);
+
     $font_path = 'css/Schoolbell-Regular.ttf';
     $font_size = 21;
     $line_height = $font_size + 5;
@@ -77,22 +86,34 @@ if(isset($_GET['s']))
         return;
       }
 
-      $deck_id = hexdec($card_arr[0]);
+      $pack_id = hexdec($card_arr[0]);
       $card_id = hexdec($card_arr[1]);
       $pick = null;
 
-      if(!$json[$deck_id])
+      if(!$json[$pack_id])
       {
         default_img();
         return;
       }
 
-      for ($i = 0; $i < $length = count($json[$deck_id]['white']); $i++)
+      if($json[$pack_id]['r'] !== 0)
       {
-        if($json[$deck_id]['white'][$i]['id'] === $card_id)
+        $pick = array(
+          'cid' => $card_id,
+          'pid' => $pack_id,
+          'txt' => isset($reasons[$json[$pack_id]['r']]) ? $reasons[$json[$pack_id]['r']] : 'Error',
+          'r' => $json[$pack_id]['r'],
+        );
+      }
+      else 
+      {
+        for ($i = 0; $i < $length = count($json[$pack_id]['white']); $i++)
         {
-          $pick = $json[$deck_id]['white'][$i];
-          break;
+          if($json[$pack_id]['white'][$i]['cid'] === $card_id)
+          {
+            $pick = $json[$pack_id]['white'][$i];
+            break;
+          }
         }
       }
 
@@ -102,7 +123,44 @@ if(isset($_GET['s']))
         return;
       }
 
-      $words = explode(" ", trim($pick['text']));
+      if($pick['r'] !== 0)
+      {
+        if($pick['r'] === 2){ //dupe card
+          $split = explode('-', $pick['txt']);
+          $dup_pid = isset($split[0]) ? (int)$split[0] : false;
+          $dup_cid = isset($split[1]) ? (int)$split[1] : false;
+          $dup_found = false;
+
+          if(isset($json[$dup_pid]['white']))
+          {
+            if($json[$dup_pid]['r'] !== 0)
+            {
+              $pick['r'] = $json[$dup_pid]['r'];
+            }
+            else 
+            {
+              for ($i = 0; $i < $length = count($json[$dup_pid]['white']); $i++)
+              {
+                if($json[$dup_pid]['white'][$i]['cid'] === $dup_cid)
+                {
+                  $pick = $json[$dup_pid]['white'][$i];
+                  $dup_found = true;
+                  break;
+                }
+              }
+            }
+          }
+
+          if($dup_found === false) $pick['txt'] = isset($reasons[$pick['r']]) ? $reasons[$pick['r']] : 'Error';
+        }
+        
+        if($pick['r'] !== 2 && $pick['r'] !== 0)
+        {
+          $pick['txt'] = isset($reasons[$pick['r']]) ? $reasons[$pick['r']] : 'Error';
+        }
+      }
+
+      $words = explode(" ", trim($pick['txt']));
       $lines = array();
       $line = '';
       $lw = 0;
@@ -158,7 +216,15 @@ if(isset($_GET['s']))
         foreach($lines as &$line)
         {
           $lx = $x + (($max_w - $line['w']) / 2);
-          imagettftext($png_image, $font_size, 0, $lx, $ly, $black, $font_path, $line['line']);
+          imagettftext(
+            $png_image, 
+            $font_size, 
+            0, 
+            $lx, $ly, 
+            $pick['r'] === 0 ? $black : $red, 
+            $font_path, 
+            $line['line']
+          );
           $ly = $ly + $line_height;
         }
       }

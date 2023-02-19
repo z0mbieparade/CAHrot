@@ -1,49 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Schoolbell&display=swap");
 html {
   background: url(bkg.png) #e4ded0;
   display: flex;
   flex-direction: column;
 }
-
 html body {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   color: #534640;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   line-height: 24px;
   font-size: 16px;
   max-width: 777px;
   margin: 0 auto;
 }
-
 html body a {
   color: #c97400;
   text-decoration: none;
 }
-
 html body button, html body select {
   background-color: #f2bb71;
   border: 1px solid #534640;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   text-transform: uppercase;
   outline: none;
 }
-
 html body button:hover, html body select:hover {
   background-color: #edcc72;
 }
-
 html body button:active, html body select:active {
   background-color: #ebdd80;
 }
-
 html body #share_it {
   margin: 0 5px;
   cursor: pointer;
 }
-
 html body #settings {
   display: flex;
   flex-direction: row;
@@ -51,38 +45,32 @@ html body #settings {
   flex: 0 0 auto;
   padding: 10px;
 }
-
 html body #settings div {
   display: flex;
   flex-direction: row;
   flex: 0 0 auto;
 }
-
 html body #settings span, html body #settings select {
   margin-right: 5px;
 }
-
 html body #settings #share_url {
   flex: 1 1 auto;
   padding: 2px;
   font-size: 15px;
   display: none;
 }
-
 html body #spread {
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
   flex-wrap: wrap;
 }
-
 html body #spread .card_wrap {
   flex: 1 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 html body #spread .card_wrap .card {
   display: flex;
   flex-direction: column;
@@ -92,27 +80,24 @@ html body #spread .card_wrap .card {
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
-  box-shadow: 2px 2px 6px #ad8e73;
+  box-shadow: 2px 2px 6px rgb(173, 142, 115);
   background: url("card.png") #f0ede9;
 }
-
-html body #spread .card_wrap .card .meaning, html body #spread .card_wrap .card .deck {
+html body #spread .card_wrap .card .meaning, html body #spread .card_wrap .card .pack {
   flex: 0 1 auto;
   text-align: center;
   font-size: 23px;
   line-height: 23px;
   text-transform: uppercase;
-  background: #d0bb9e;
+  background: rgb(208, 187, 158);
   background: linear-gradient(90deg, rgba(208, 187, 158, 0.7) 0%, rgba(227, 221, 207, 0.5) 15%, rgba(227, 221, 207, 0.5) 85%, rgba(208, 187, 158, 0.7) 100%);
   padding: 10px 3px;
   border: 1px dashed #534640;
 }
-
-html body #spread .card_wrap .card .deck {
+html body #spread .card_wrap .card .pack {
   font-size: 10px;
   line-height: 11px;
 }
-
 html body #spread .card_wrap .card .text_wrap {
   flex: 1 1 auto;
   align-items: center;
@@ -123,35 +108,43 @@ html body #spread .card_wrap .card .text_wrap {
   border-left: 1px dashed #534640;
   border-right: 1px dashed #534640;
 }
-
 html body #spread .card_wrap .card .text_wrap .text {
   text-align: center;
-  font-family: 'Schoolbell', cursive;
+  font-family: "Schoolbell", cursive;
   font-size: 24px;
   line-height: 23px;
   color: #000;
 }
-
 html body #spread .card_wrap .card#card_0 .text_wrap {
-  background: #f3bc72;
+  background: rgb(243, 188, 114);
   background: radial-gradient(circle, rgba(234, 221, 131, 0.5) 0%, rgba(243, 188, 114, 0.5) 100%);
 }
-
 html body #spread .card_wrap .card#card_1 .text_wrap {
-  background: #eaecb4;
+  background: rgb(234, 236, 180);
   background: radial-gradient(circle, rgba(234, 236, 180, 0.5) 0%, rgba(196, 221, 134, 0.5) 100%);
 }
-
 html body #spread .card_wrap .card#card_2 .text_wrap {
-  background: #b2d1d1;
+  background: rgb(178, 209, 209);
   background: radial-gradient(circle, rgba(215, 216, 156, 0.5) 0%, rgba(178, 209, 209, 0.5) 100%);
 }
-
+html body #spread .card_wrap .card.card_removed {
+  border: 1px solid #751f1f;
+}
+html body #spread .card_wrap .card.card_removed .text_wrap .text {
+  color: #c90000;
+}
 html body #footer {
   flex: 0 0 auto;
   text-align: center;
   padding: 10px;
   font-size: 12px;
+}
+html body #footer #warning {
+  font-size: 10px;
+  line-height: 12px;
+}
+html body #footer #warning #ick {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 495px) {
@@ -167,14 +160,14 @@ html body #footer {
     width: 170px;
     margin-top: -24px;
   }
-  html body #spread .card_wrap .card .meaning, html body #spread .card_wrap .card .deck {
+  html body #spread .card_wrap .card .meaning, html body #spread .card_wrap .card .pack {
     padding: 8px 3px;
   }
   html body #spread .card_wrap .card .meaning {
     font-size: 18px;
     line-height: 11px;
   }
-  html body #spread .card_wrap .card .deck {
+  html body #spread .card_wrap .card .pack {
     font-size: 9px;
     line-height: 9px;
   }
@@ -183,7 +176,6 @@ html body #footer {
     line-height: 19px;
   }
 }
-
 @media screen and (max-width: 437px) and (min-width: 379px) {
   html body #spread {
     padding-top: 26px;
@@ -194,14 +186,14 @@ html body #footer {
     width: 140px;
     margin-top: -24px;
   }
-  html body #spread .card_wrap .card .meaning, html body #spread .card_wrap .card .deck {
+  html body #spread .card_wrap .card .meaning, html body #spread .card_wrap .card .pack {
     padding: 4px 3px;
   }
   html body #spread .card_wrap .card .meaning {
     font-size: 15px;
     line-height: 16px;
   }
-  html body #spread .card_wrap .card .deck {
+  html body #spread .card_wrap .card .pack {
     font-size: 9px;
     line-height: 9px;
   }
@@ -210,7 +202,6 @@ html body #footer {
     line-height: 17px;
   }
 }
-
 @media screen and (max-width: 378px) {
   html body #spread {
     padding-top: 44px;
@@ -218,4 +209,4 @@ html body #footer {
   html body #spread .card_wrap .card {
     margin-top: -44px;
   }
-}
+}/*# sourceMappingURL=style.css.map */

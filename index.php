@@ -89,6 +89,7 @@ $settings = $set;
 
     <div id="footer">
       A silly tarot generator using data from Cards Against Humanity by <a href="<?php echo getenv('APP_SITE_PATH'); ?>">z0m.bi</a>.
+      <p id="warning">DISCLAIMER: there are thousands of CAH cards, and I've done my best to filter out the extra gross ones. It's always possible I missed something, no one is perfect and filters are fallible. You can always email me at me[at]z0m.bi and let me know if you bump into something extra ick.</p> 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

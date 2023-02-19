@@ -104,7 +104,7 @@ html
           box-shadow: 2px 2px 6px rgba(173,142,115,1);
           background: url('card.png') #f0ede9;
 
-          .meaning, .deck
+          .meaning, .pack
           {
             flex: 0 1 auto;
             text-align: center;
@@ -117,7 +117,7 @@ html
             border: 1px dashed #534640;
           }
 
-          .deck
+          .pack
           {
             font-size: 10px;
             line-height: 11px;
@@ -161,6 +161,16 @@ html
             background: rgb(178,209,209);
             background: radial-gradient(circle, rgba(215,216,156,.5) 0%, rgba(178,209,209,.5) 100%);
           }
+
+          &.card_removed
+          {
+            border: 1px solid #751f1f;
+
+            .text_wrap .text 
+            {
+              color: #c90000;
+            }
+          }
         }
       }
     }
@@ -171,6 +181,17 @@ html
       text-align: center;
       padding: 10px;
       font-size: 12px;
+
+      #warning 
+      {
+        font-size: 10px;
+        line-height: 12px;
+
+        #ick 
+        {
+          cursor: pointer;
+        }
+      }
     }
   }
 }
@@ -194,7 +215,7 @@ html
         width: 170px;
         margin-top: -24px;
 
-        .meaning, .deck
+        .meaning, .pack
         {
           padding: 8px 3px;
         }
@@ -205,7 +226,7 @@ html
           line-height: 11px;
         }
 
-        .deck
+        .pack
         {
           font-size: 9px;
           line-height: 9px;
@@ -236,7 +257,7 @@ html
         width: 140px;
         margin-top: -24px;
 
-        .meaning, .deck
+        .meaning, .pack
         {
           padding: 4px 3px;
         }
@@ -247,7 +268,7 @@ html
           line-height: 16px;
         }
 
-        .deck
+        .pack
         {
           font-size: 9px;
           line-height: 9px;
